@@ -1,7 +1,7 @@
 /*
 Something like a search engine
 Type in author, genre, topic, or age group
-It will direct you the book series based on your "tags"
+It will direct you to the book series based on your "tags"
 
 Coded by Janeen Soria
 Last modified February 14, 2018
