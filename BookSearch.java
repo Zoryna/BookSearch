@@ -37,7 +37,7 @@ public class BookSearch
 		System.out.println(bookInfo);
 	}
 
-	public void findSeries() //improvement idea: have parameter be list
+	public void findSeries()
 	{
     int counterH = 0;
     int counterP = 0;
