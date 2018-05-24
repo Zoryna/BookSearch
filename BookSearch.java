@@ -4,7 +4,7 @@ Type in author, genre, topic, or age group
 It will direct you to the book series based on your "tags"
 
 Coded by Janeen Soria
-Last modified February 14, 2018
+Last modified May 23, 2018
 */
 
 import java.util.Scanner;
@@ -13,18 +13,12 @@ import java.util.ArrayList;
 
 public class BookSearch
 {
-  //store description user input, 3 because one to compare to each book series list
-  //improvement idea: compile and run with just one bookInfo
- 	ArrayList<String> bookInfo1 = new ArrayList<String>();
-  ArrayList<String> bookInfo2 = new ArrayList<String>();
-  ArrayList<String> bookInfo3 = new ArrayList<String>();
+ 	ArrayList<String> bookInfo = new ArrayList<String>();
+
 	//book series: {author, genre, topic, age group}
   ArrayList<String> harryPotter = new ArrayList<String> (Arrays.asList("Rowling", "fantasy", "wizards", "all ages"));
   ArrayList<String> percyJackson = new ArrayList<String> (Arrays.asList("Riordan", "fantasy", "myth", "children"));
   ArrayList<String> forgottenBooks = new ArrayList<String> (Arrays.asList("Zafon", "mystery", "gothic", "adult"));
-	/*String [] harryPotter = new String [] {"Rowling", "fantasy", "wizards", "all ages"}; //series 1 (Harry Potter) keywords
-	String [] percyJackson = new String [] {"Riordan", "fantasy", "myth", "children"}; //series 2 (Percy Jackson) keywords
-	String [] forgottenBooks = new String [] {"Zafon", "mystery", "gothic", "adult" }; //series 3 (Cemetary of Forgotten Books) keywords */
 
 	public void getInfo()
 	{
@@ -34,79 +28,63 @@ public class BookSearch
 		while (true)
 		{
 			response = keyboard.nextLine();
-			bookInfo1.add(response); //adds user input into ArrayList
-      bookInfo2.add(response);
-      bookInfo3.add(response);
-			if (response.equals("done")) //exit loop
+			bookInfo.add(response); //adds user input into ArrayList
+			if (response.equals("done"))
 				break;
 		}
-		bookInfo1.remove("done"); //removes the exit command from bookInfo
-    bookInfo2.remove("done");
-    bookInfo3.remove("done");
+		bookInfo.remove("done"); //removes the exit command from bookInfo
 		System.out.println("Here are your tags:");
-		System.out.println(bookInfo1); //shows each response is in its own index
-    //don't need to show bookInfo2 and bookInfo3 because they're the same
+		System.out.println(bookInfo);
 	}
 
 	public void findSeries() //improvement idea: have parameter be list
 	{
-		/*int counterH, counterP, counterF;
-    counterH = 0;
-    counterP = 0;
-    counterF = 0; */
+    int counterH = 0;
+    int counterP = 0;
+    int counterF = 0;
 
 		System.out.println("Now we will find the right book series for you");
-    //compares the user input with the tags
-    bookInfo1.retainAll(harryPotter);
-    //System.out.println(bookInfo1); //print just for reference
-    //System.out.println(bookInfo1.size()); //so can compare and then recommend with highest value
-    bookInfo2.retainAll(percyJackson);
-    //System.out.println(bookInfo2);
-    //System.out.println(bookInfo2.size());
-    bookInfo3.retainAll(forgottenBooks);
-    //System.out.println(bookInfo3);
-    //System.out.println(bookInfo3.size());
 
-		/*for (int i = 0; i < bookInfo.size(); i++) //for harryPotter
-		{
-      for (int h = 0; h < harryPotter.length; h++)
-      {
-        if (bookInfo.get(i).contains(harryPotter[h]))
-          System.out.println(bookInfo.get(i).contains(harryPotter[h]));
-          //counterH++;
-      }
-		}
-    System.out.println(counterH); //test
+    for (int i = 0; i <= bookInfo.size()-1; i++)
+      for (int h = 0; h <= harryPotter.size()-1; h++)
+        {
+          //System.out.println( i + " " + bookInfo.get(i) + " " + h + " " + harryPotter.get(h));
+          if (bookInfo.get(i).equals(harryPotter.get(h)))
+          {
+            counterH++;
+            //System.out.println(counterH);
+          }
+        }
 
-    for (int j = 0; j < bookInfo.size(); j++) //for percyJackson
-		{
-      for (int p = 0; p < percyJackson.length; p++)
-      {
-        if (bookInfo.get(j).contains(harryPotter[p]))
-        System.out.println(bookInfo.get(j).contains(percyJackson[p]));
-          counterP++;
-      }
-		}
-    System.out.println(counterP); //test
+    for (int i = 0; i <= bookInfo.size()-1; i++)
+      for (int p = 0; p <= percyJackson.size()-1; p++)
+        {
+          //System.out.println( i + " " + bookInfo.get(i) + " " + p + " " + percyJackson.get(p));
+          if (bookInfo.get(i).equals(percyJackson.get(p)))
+          {
+            counterP++;
+            //System.out.println(counterP);
+          }
+        }
 
-    for (int k = 0; k < bookInfo.size(); k++) //for forgottenBooks
-		{
-      for (int f = 0; f < forgottenBooks.length; f++)
-      {
-        if (bookInfo.get(k).contains(harryPotter[f]))
-        System.out.println(bookInfo.get(k).contains(forgottenBooks[f]));
-          counterF++;
-      }
-		}
-    System.out.println(counterF); //test */
+    for (int i = 0; i <= bookInfo.size()-1; i++)
+      for (int f = 0; f <= forgottenBooks.size()-1; f++)
+        {
+          //System.out.println( i + " " + bookInfo.get(i) + " " + f + " " + forgottenBooks.get(f));
+          if (bookInfo.get(i).equals(forgottenBooks.get(f)))
+          {
+            counterF++;
+            //System.out.println(counterF);
+          }
+        }
 
     //compares the counters and recommends highest value
     //improvement idea: have all possibilties
-     if ((bookInfo1.size() > bookInfo2.size()) && (bookInfo1.size() > bookInfo3.size()))
+    if ((counterH > counterP) && (counterH > counterF))
       System.out.println("We recommend " + "Harry Potter: " + harryPotter);
-    if ((bookInfo2.size() > bookInfo1.size()) && (bookInfo2.size() > bookInfo3.size()))
+    else if ((counterP > counterH) && (counterP > counterF))
       System.out.println("We recommend " + "Percy Jackson and the Olympians: " + percyJackson);
-    if ((bookInfo3.size() > bookInfo1.size()) && (bookInfo3.size() > bookInfo1.size()))
+    else if ((counterF > counterH) && (counterF > counterP))
       System.out.println("We recommend " + "The Cemetery of Forgotten Books: " + forgottenBooks);
 	}
 
