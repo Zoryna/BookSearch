@@ -15,3 +15,7 @@ A Java project.
 Java must be installed on your device.
 
 To run the project, you must compile all the Java files, and then you run the driver class.
+
+## Authors
+
+Janeen Soria
