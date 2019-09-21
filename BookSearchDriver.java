@@ -38,12 +38,12 @@ public class BookSearchDriver
 						System.out.println("Happy reading!");
 						break;
 					}
+				}
 			}
-		}
-		else
+			else
 			System.out.println("Happy reading!");
 		}
 		else
-			System.out.println("k");
-		}
+		System.out.println("k");
+	}
 }
