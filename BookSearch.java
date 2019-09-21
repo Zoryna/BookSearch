@@ -15,13 +15,13 @@ public class BookSearch
 {
   ArrayList<String> bookInfo = new ArrayList<String>();
 
-	//book series: {author, genre, topic, age group}
+  //book series: {author, genre, topic, age group}
   ArrayList<String> harryPotter = new ArrayList<String> (Arrays.asList("Rowling", "fantasy", "wizards", "all ages"));
   ArrayList<String> percyJackson = new ArrayList<String> (Arrays.asList("Riordan", "fantasy", "myth", "children"));
   ArrayList<String> forgottenBooks = new ArrayList<String> (Arrays.asList("Zafon", "mystery", "gothic", "adult"));
 
   public void getInfo()
-	{
+  {
     Scanner keyboard = new Scanner (System.in);
     String response;
 		System.out.println("Describe what type of book series you want. Type 'done' when you are finished.");
